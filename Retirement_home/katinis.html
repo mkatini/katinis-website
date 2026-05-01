@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Katini's — A Sanctuary for the Soul</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sand: #E8DFD0;
+    --sand-light: #F5F0E8;
+    --sand-dark: #C4B89A;
+    --stone: #7A7268;
+    --earth: #4A3F35;
+    --bark: #2C2219;
+    --leaf: #5C7A5A;
+    --leaf-light: #A3B899;
+    --water: #7BAAB8;
+    --gold: #C9A85C;
+    --gold-light: #E8D4A0;
+    --white: #FDFAF5;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bark);
+    color: var(--sand);
+    font-family: var(--font-body);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(44, 34, 25, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201, 168, 92, 0.15);
+    transition: background 0.4s;
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--sand);
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    transition: opacity 0.3s, color 0.3s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--bark);
+  }
+
+   .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to bottom, rgba(44,34,25,0.3) 0%, rgba(44,34,25,0.6) 60%, rgba(44,34,25,0.95) 100%),
+      url('https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=1800&q=80');
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.05);
+    animation: slowzoom 18s ease-in-out infinite alternate;
+
+}
+    
+  }
+
+  @keyframes slowzoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1.12); }
+  }
+
+  .hero-content {
+    position: relative;
+    text-align: center;
+    max-width: 780px;
+    padding: 0 2rem;
+    animation: fadein 1.8s ease both;
+  }
+
+  @keyframes fadein {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 300;
+  }
+
+  .hero-sub {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-style: italic;
+    color: var(--sand);
+    opacity: 0.8;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 2rem;
+    opacity: 0.6;
+  }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0.9rem 2.5rem;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .btn-outline:hover {
+    background: var(--gold);
+    color: var(--bark);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.4;
+    animation: bounce 2.5s ease-in-out infinite;
+  }
+
+  .scroll-hint span {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .scroll-hint svg { width: 16px; height: 16px; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* SECTIONS BASE */
+  section { padding: 8rem 0; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 1.2rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .section-body {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--sand);
+    opacity: 0.8;
+    max-width: 520px;
+  }
+
+  /* THIN RULE */
+  .thin-rule {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,92,0.3), transparent);
+    margin: 0;
+  }
+
+  /* INTRO SPLIT */
+  .intro-split {
+    background: var(--bark);
+    border-top: 1px solid rgba(201,168,92,0.1);
+  }
+
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .split-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .split-image img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+  }
+
+  .split-image:hover img { transform: scale(1.03); }
+
+  .split-image::before {
+    content: '';
+    position: absolute;
+    top: -20px; left: -20px;
+    right: 20px; bottom: 20px;
+    border: 1px solid rgba(201,168,92,0.2);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .quote-block {
+    border-left: 2px solid var(--gold);
+    padding-left: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .quote-block p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--sand-light);
+    line-height: 1.7;
+  }
+
+  /* FLOOR PLAN */
+  .floorplan-section { background: #221910; }
+
+  .floorplan-section .container {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .floorplan-img {
+    width: 100%;
+    border: 1px solid rgba(201,168,92,0.2);
+  }
+
+  .rooms-list { margin-top: 2.5rem; }
+
+  .room-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(201,168,92,0.1);
+  }
+
+  .room-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 0.45rem;
+    flex-shrink: 0;
+  }
+
+  .room-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--white);
+    font-style: italic;
+  }
+
+  .room-desc {
+    font-size: 0.8rem;
+    color: var(--stone);
+    margin-top: 0.2rem;
+    line-height: 1.6;
+  }
+/* ====================== GALLERY GRID ====================== */
+.gallery-section { 
+    background: var(--bark); 
+}
+
+.gallery-section .container > .section-label,
+.gallery-section .container > .section-title {
+    text-align: center;
+    max-width: none;
+}
+
+.gallery-section .container > .section-title { 
+    margin-bottom: 3rem; 
+}
+
+/* Main Masonry Container */
+.masonry {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive */
+    grid-auto-rows: 200px;           /* Base row height */
+    gap: 1.2rem;
+    padding: 10px 0;
+}
+
+/* Individual Items */
+.masonry-item {
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+    cursor: pointer;
+    background: #111;
+}
+
+/* Make images fill the item properly */
+.masonry-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+}
+
+.masonry-item:hover img { 
+    transform: scale(1.06); 
+}
+
+/* Overlay */
+.masonry-item .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(44,34,25,0);
+    transition: background 0.4s;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+}
+
+.masonry-item:hover .overlay { 
+    background: rgba(44,34,25,0.65); 
+}
+
+.masonry-item .overlay-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--white);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s;
+}
+
+.masonry-item:hover .overlay-text { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+/* Height Spans - This is the key part */
+.m-h1 { grid-row: span 2; }   /* Tall */
+.m-h2 { grid-row: span 1; }   /* Normal */
+
+/* Optional: Make one very tall if you want */
+.m-tall { grid-row: span 3; }  /* PHILOSOPHY */
+  .philosophy-section {
+    background: #1A1209;
+    text-align: center;
+    padding: 10rem 0;
+  }
+
+  .philosophy-section .section-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.2;
+  }
+
+  .philosophy-section .section-body {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 5rem;
+  }
+
+  .pillar {
+    padding: 3rem 2rem;
+    background: rgba(201,168,92,0.04);
+    border: 1px solid rgba(201,168,92,0.08);
+    text-align: center;
+    transition: background 0.3s;
+  }
+
+  .pillar:hover { background: rgba(201,168,92,0.08); }
+
+  .pillar-icon {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--gold);
+    opacity: 0.7;
+    font-style: italic;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .pillar-name {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 0.8rem;
+  }
+
+  .pillar-desc {
+    font-size: 0.8rem;
+    color: var(--stone);
+    line-height: 1.7;
+  }
+
+  /* SPACES STRIP */
+  .spaces-section { background: var(--bark); padding: 0; }
+
+  .spaces-strip {
+    display: flex;
+    height: 70vh;
+    min-height: 400px;
+  }
+
+  .space-panel {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .space-panel:hover { flex: 2.5; }
+
+  .space-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .space-panel:hover img { transform: scale(1.04); }
+
+  .space-panel .sp-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(44,34,25,0.85) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+  }
+
+  .sp-label {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--white);
+    white-space: nowrap;
+    overflow: hidden;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    transition: writing-mode 0.3s, transform 0.3s;
+  }
+
+  .space-panel:hover .sp-label {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+
+  /* VISION NOTE */
+  .vision-section {
+    background: var(--earth);
+    padding: 8rem 0;
+  }
+
+  .vision-section .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .vision-number {
+    font-family: var(--font-display);
+    font-size: 10rem;
+    line-height: 1;
+    color: rgba(201,168,92,0.12);
+    position: absolute;
+    top: -2rem;
+    left: -2rem;
+    font-weight: 300;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .vision-card {
+    position: relative;
+    background: rgba(44,34,25,0.5);
+    border: 1px solid rgba(201,168,92,0.15);
+    padding: 3rem;
+  }
+
+  .vision-card-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .vision-card p {
+    font-size: 0.88rem;
+    color: var(--sand);
+    opacity: 0.8;
+    line-height: 1.9;
+  }
+
+  /* CONTACT / CTA */
+  .cta-section {
+    background: #110D06;
+    text-align: center;
+    padding: 10rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: 'Katini\'s';
+    position: absolute;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 20rem;
+    color: rgba(201,168,92,0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    font-weight: 300;
+  }
+
+  .cta-section .section-title {
+    margin: 0 auto 1rem;
+    max-width: 700px;
+  }
+
+  .cta-section .section-body {
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-card {
+    padding: 2.5rem;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(201,168,92,0.1);
+  }
+
+  .contact-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .contact-value {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--white);
+    font-style: italic;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--bark);
+    border-top: 1px solid rgba(201,168,92,0.1);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer .logo {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  footer p {
+    font-size: 0.7rem;
+    color: var(--stone);
+    letter-spacing: 0.1em;
+  }
+
+  /* ANIMATE ON SCROLL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+  .reveal-delay-4 { transition-delay: 0.6s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Katini's</a>
+  <ul class="nav-links">
+    <li><a href="#about">The Vision</a></li>
+    <li><a href="#spaces">Spaces</a></li>
+    <li><a href="#floorplan">Layout</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">A Private Sanctuary &nbsp;·&nbsp; Bali-Inspired Living</span>
+    <h1 class="hero-title"><em>Katini's</em></h1>
+    <p class="hero-sub">Where stillness meets splendour</p>
+    <div class="hero-divider"></div>
+    <a href="#about" class="btn-outline">Explore the Sanctuary</a>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M8 3v10M4 9l4 4 4-4"/>
+    </svg>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro-split" id="about">
+  <div class="container">
+    <div class="split-grid">
+      <div class="reveal">
+        <div class="split-image">
+          <img src="images/villa_entrance.png" 
+               alt="Tropical pool villa" 
+               loading="lazy">
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <span class="section-label">The Vision</span>
+        <h2 class="section-title">A life lived in <em>slow luxury</em></h2>
+        <p class="section-body">Katini's is a deeply personal vision — a retirement sanctuary drawn from the philosophy of Balinese living, where architecture breathes with the landscape, and every corner invites you to pause, exhale, and simply be.</p>        <div class="quote-block" style="margin-top: 2.5rem;">
+          <p>"To age gracefully is to surround yourself with beauty, warmth, and the gentle rhythms of nature."</p>
+        </div>
+        <p class="section-body" style="margin-top: 2rem;">Inspired by the villas of Seminyak and Ubud, this home weaves natural stone, warm timber, white plaster and open sky into a single, seamless composition — a place that feels both elemental and exquisitely refined.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="thin-rule"></div>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy-section" id="philosophy">
+  <div class="container">
+    <span class="section-label reveal" style="text-align:center; display:block;">Design Philosophy</span>
+    <h2 class="section-title reveal">Architecture that <em>breathes</em></h2>
+    <p class="section-body reveal">Every element of Katini's is guided by four Balinese principles — a design language that places harmony above all else.</p>
+
+    <div class="pillars">
+      <div class="pillar reveal reveal-delay-1">
+        <span class="pillar-icon">∼</span>
+        <p class="pillar-name">Tri Hita Karana</p>
+        <p class="pillar-desc">Harmony between humanity, nature, and the spiritual — the soul of all Balinese design.</p>
+      </div>
+      <div class="pillar reveal reveal-delay-2">
+        <span class="pillar-icon">◎</span>
+        <p class="pillar-name">Open Living</p>
+        <p class="pillar-desc">Indoor and outdoor spaces dissolve into each other through floor-to-ceiling glass and open pavilions.</p>
+      </div>
+      <div class="pillar reveal reveal-delay-3">
+        <span class="pillar-icon">◇</span>
+        <p class="pillar-name">Natural Materials</p>
+        <p class="pillar-desc">Raw stone walls, slatted timber ceilings, polished concrete — textures that age with beauty.</p>
+      </div>
+      <div class="pillar reveal reveal-delay-4">
+        <span class="pillar-icon">✦</span>
+        <p class="pillar-name">Soft Light</p>
+        <p class="pillar-desc">Ambient niches, warm LED accents, and golden hour pools of light throughout every room.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOOR PLAN -->
+<section class="floorplan-section" id="floorplan">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">The Layout</span>
+      <h2 class="section-title">Three bedrooms. <em>One world.</em></h2>
+      <p class="section-body">A single-storey composition arranged around a private pool and tropical garden — every room connected to light, air, and greenery.</p>
+      <img src="images/floorplan-img.png" alt="Katini's floor plan" class="floorplan-img" style="margin-top: 2.5rem;" loading="lazy">
+    </div>
+
+    <div class="reveal reveal-delay-1">
+      <span class="section-label" style="margin-top: 0;">Room by Room</span>
+      <div class="rooms-list">
+        <div class="room-item">
+          <div class="room-dot"></div>
+          <div>
+            <p class="room-name">Master Bedroom</p>
+            <p class="room-desc">Open-plan suite with arched windows, pendant lighting and direct pool access. A bath sanctuary with stone soaking tub.</p>
+          </div>
+        </div>
+        <div class="room-item">
+          <div class="room-dot"></div>
+          <div>
+            <p class="room-name">Bedroom One</p>
+            <p class="room-desc">Garden-facing room with vaulted timber ceiling, ceiling fan and bespoke arched window framing lush tropical views.</p>
+          </div>
+        </div>
+        <div class="room-item">
+          <div class="room-dot"></div>
+          <div>
+            <p class="room-name">Bedroom Two</p>
+            <p class="room-desc">A serene retreat with floor-to-ceiling glass opening to a private garden court.</p>
+          </div>
+        </div>
+        <div class="room-item">
+          <div class="room-dot"></div>
+          <div>
+            <p class="room-name">Living & Dining</p>
+            <p class="room-desc">Open pavilion-style living with sunken seating, slatted wood ceiling and a full kitchen island. Opens entirely to the pool deck.</p>
+          </div>
+        </div>
+        <div class="room-item">
+          <div class="room-dot"></div>
+          <div>
+            <p class="room-name">Pool & Deck</p>
+            <p class="room-desc">A 9-metre private plunge pool flanked by sun loungers, tropical palms, and a stone feature wall.</p>
+          </div>
+        </div>
+        <div class="room-item">
+          <div class="room-dot"></div>
+          <div>
+            <p class="room-name">Bathrooms</p>
+            <p class="room-desc">Semi-outdoor wet rooms with natural stone, rainfall showers, and freestanding soaking tubs beside living rock walls.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACES STRIP (interactive) -->
+<section class="spaces-section" id="spaces">
+  <div class="spaces-strip">
+    <div class="space-panel">
+      <img src="images/pool_1.png" alt="Private pool" loading="lazy">
+      <div class="sp-overlay"><span class="sp-label">The Pool</span></div>
+    </div>
+    <div class="space-panel">
+      <img src="images/living_area_1.png" alt="Living room" loading="lazy">
+      <div class="sp-overlay"><span class="sp-label">Living Room</span></div>
+    </div>
+    <div class="space-panel">
+      <img src="images/bedroom_1.png" alt="Master bedroom" loading="lazy">
+      <div class="sp-overlay"><span class="sp-label">Master Suite</span></div>
+    </div>
+    <div class="space-panel">
+      <img src="images/bathroom_1.png" alt="Bathroom" loading="lazy">
+      <div class="sp-overlay"><span class="sp-label">Bath Sanctuary</span></div>
+    </div>
+    <div class="space-panel">
+      <img src="images/kitchen.png" alt="Kitchen" loading="lazy">
+      <div class="sp-overlay"><span class="sp-label">Kitchen & Dining</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <span class="section-label reveal" style="display:block; text-align:center;">Gallery</span>
+    <h2 class="section-title reveal" style="text-align:center;">Every corner, <em>considered</em></h2>
+
+    <div class="masonry reveal">
+      <div class="masonry-item m-h1" style="grid-row: span 2;">
+        <img src="images/bedroom_3.png" alt="Guest bedroom" loading="lazy">
+        <div class="overlay"><span class="overlay-text">Guest suite</span></div>
+      </div>
+      
+      <div class="masonry-item m-h1">
+        <img src="images/bedroom_2.png" alt="Guest bedroom" loading="lazy">
+        <div class="overlay"><span class="overlay-text">Guest suite</span></div>
+      </div>
+
+      <div class="masonry-item m-h1">
+        <img src="images/bedroom_1.png" alt="Master bedroom" loading="lazy">
+        <div class="overlay"><span class="overlay-text">Master suite</span></div>
+      </div>
+
+      <div class="masonry-item m-h2">
+        <img src="images/bathroom_1.png" alt="Master bathroom" loading="lazy">
+        <div class="overlay"><span class="overlay-text">Master bathroom</span></div>
+      </div>
+
+      <div class="masonry-item m-h2">
+        <img src="images/bathroom_2.png" alt="Guest bathroom" loading="lazy">
+        <div class="overlay"><span class="overlay-text">Guest bathroom</span></div>
+      </div>
+
+      <div class="masonry-item m-h2">
+        <img src="images/library.png" alt="Library" loading="lazy">
+        <div class="overlay"><span class="overlay-text">Library</span></div>
+      </div>
+
+      <div class="masonry-item m-h2">
+        <img src="images/study.png" alt="Study" loading="lazy">
+        <div class="overlay"><span class="overlay-text">Study</span></div>
+      </div>
+
+      <div class="masonry-item m-h2">
+        <img src="images/pool2.png" alt="The Pool" loading="lazy">
+        <div class="overlay"><span class="overlay-text">Pool</span></div>
+      </div>
+
+      <div class="masonry-item m-h2">
+        <img src="images/kitchen_1.png" alt="Open kitchen" loading="lazy">
+        <div class="overlay"><span class="overlay-text">Open-plan kitchen</span></div>
+      </div>
+
+      <div class="masonry-item m-h2">
+        <img src="images/rooftop.png" alt="Rooftop Sanctuary" loading="lazy">
+        <div class="overlay"><span class="overlay-text">Rooftop garden</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION NOTE -->
+<section class="vision-section">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">A Personal Note</span>
+      <h2 class="section-title">This is my <em>dream</em>, taking shape</h2>
+      <p class="section-body" style="max-width: 480px;">Katini's is not simply a house — it is the culmination of a life well lived, distilled into stone, wood, water and light. A place to rest, to receive loved ones, and to greet each morning with gratitude.</p>
+      <div class="quote-block" style="margin-top: 2.5rem; max-width: 480px;">
+        <p>"I want to grow old here — surrounded by beauty, with bare feet on warm tiles and the sound of water never far away."</p>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="vision-card">
+        <span class="vision-number">∞</span>
+        <p class="vision-card-title">The Bali Influence</p>
+        <p>The architecture draws deeply from the Balinese tradition — where buildings are not imposed on the land but grown from it. Natural materials, open pavilions, sacred geometry, and the constant interplay of water and greenery shape every decision.</p>
+        <p style="margin-top: 1.2rem;">The outdoor bath, the stone walls, the tropical garden corridor, the slatted wood ceiling — these are not stylistic flourishes. They are an entire way of living.</p>
+      </div>
+      <div class="vision-card" style="margin-top: 2px;">
+        <p class="vision-card-title">A Three-Bedroom Sanctuary</p>
+        <p>Designed to welcome family and close friends — two guest suites and a master suite, each with their own character and garden connection. The living spaces open fully to the pool, making the outdoors an extension of every room.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="container" style="position: relative; z-index: 1;">
+    <span class="section-label reveal" style="display:block; text-align:center;">Get in Touch</span>
+    <h2 class="section-title reveal">Begin the <em>journey</em></h2>
+    <p class="section-body reveal" style="text-align:center; margin: 0 auto 3rem;">This is a vision in progress. If you are an architect, builder, or simply someone who shares this dream — reach out.</p>
+    <a href="mailto:mercy.katini@gmail.com" class="btn-outline reveal" style="position:relative; z-index:2;">Send a Message</a>
+
+    <div class="contact-grid reveal" style="max-width: 700px; margin: 5rem auto 0;">
+      <div class="contact-card">
+        <span class="contact-label">Location</span>
+        <p class="contact-value">Kilifi, Kenya</p>
+      </div>
+      <div class="contact-card">
+        <span class="contact-label">Concept</span>
+        <p class="contact-value">Private Villa Retreat</p>
+      </div>
+      <div class="contact-card">
+        <span class="contact-label">Status</span>
+        <p class="contact-value">Vision Board 2026</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Katini's</div>
+  <p>A personal vision &nbsp;·&nbsp; Bali-Inspired Retirement Sanctuary</p>
+  <p style="color: var(--stone); font-size: 0.65rem;">© 2025 Katini's. All rights reserved.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
