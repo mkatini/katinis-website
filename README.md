@@ -1,3 +1,6 @@
+### Live Demo
+https://mkatini.github.io/katinis-website/
+
 ### Image Use Disclaimer
 
 This repository contains reference images sourced from publicly available materials for the sole purpose of illustrating design ideas and architectural inspiration.
@@ -14,3 +17,8 @@ The project explores a **biophilic design approach**, blending architecture with
 
 It serves as a personal portfolio piece documenting the **design vision, inspiration, and phased construction strategy**.
 
+## Repo Structure
+/
+├── index.html
+├── images/
+├── README.md
